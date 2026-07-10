@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>About | Aria Care Partners</title>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." name="description"/>
-        <meta content="About | Aria Care Partners" property="og:title"/>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." property="og:description"/>
+        <title>About | The Digital Health Assurance Company</title>
+        <meta content="Meet The Digital Health Assurance Company's skilled team of healthcare, clinical safety, regulatory and commercial experts." name="description"/>
+        <meta content="About | The Digital Health Assurance Company" property="og:title"/>
+        <meta content="Meet The Digital Health Assurance Company's skilled team of healthcare, clinical safety, regulatory and commercial experts." property="og:description"/>
         <meta content="assets/img/gen_dentist-examining-patients-teeth-close-up_1.jpg" property="og:image"/>
-        <meta content="About | Aria Care Partners" name="twitter:title"/>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." name="twitter:description"/>
+        <meta content="About | The Digital Health Assurance Company" name="twitter:title"/>
+        <meta content="Meet The Digital Health Assurance Company's skilled team of healthcare, clinical safety, regulatory and commercial experts." name="twitter:description"/>
         <meta content="assets/img/gen_dentist-examining-patients-teeth-close-up_1.jpg" name="twitter:image"/>
         <meta property="og:type" content="website"/>
         <meta content="summary_large_image" name="twitter:card"/>
@@ -46,7 +46,7 @@
             <div data-collapse="medium" data-animation="default" data-duration="400" fs-scrolldisable-element="smart-nav" data-easing="ease" data-easing2="ease" role="banner" class="navbar_wrap w-nav">
                 <div class="navbar_container">
                     <a href="index.html" class="navbar_logo w-nav-brand">
-                        <img loading="eager" src="assets/img/lumora-logo-dark.svg" alt="Aria Care logo" class="logo_image"/>
+                        <img loading="eager" src="assets/img/digital-health-assurance-logo.png" alt="The Digital Health Assurance Company logo" class="logo_image"/>
                     </a>
                     <div class="navbar-content_wrap">
                         <nav role="navigation" class="navbar_menu w-nav-menu">
@@ -1381,7 +1381,7 @@
                     <div class="container">
                         <div data-w-id="a1b41f4f-e78b-52e6-2492-2ff9a80f251e" class="footer_header">
                             <a id="w-node-_69a072d1-69e6-8783-2548-858b3e84bf4f-4af74ce9" href="index.html" class="footer_brand w-inline-block">
-                                <img src="assets/img/lumora-logo-dark.svg" loading="lazy" alt="Aria Care logo" class="brand_logo"/>
+                                <img src="assets/img/digital-health-assurance-logo.png" loading="lazy" alt="The Digital Health Assurance Company logo" class="brand_logo"/>
                             </a>
                             <div class="footer-contact_wrap">
                                 <a href="tel:(877) 674-1211" class="footer-contact_link w-inline-block">
@@ -1611,14 +1611,125 @@
 
 
     
+        <script>
+            (function () {
+                function text(root, selector, value) {
+                    var node = root && root.querySelector(selector);
+                    if (node) node.textContent = value;
+                }
+                function html(root, selector, value) {
+                    var node = root && root.querySelector(selector);
+                    if (node) node.innerHTML = value;
+                }
+                function sharedFooter() {
+                    document.querySelectorAll('.navbar_button .button_primary, .section_cta .button_primary, .footer_info .button_primary').forEach(function (link) {
+                        link.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+                    });
+                    document.querySelectorAll('.navbar_button .button_text, .section_cta .button_text, .footer_info .button_text').forEach(function (node) {
+                        node.textContent = 'Contact Us';
+                    });
+                    var footer = document.querySelector('.section_footer');
+                    if (!footer) return;
+                    var email = footer.querySelector('a[href^="mailto:"]');
+                    if (email) {
+                        email.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Support';
+                        text(email, 'div', 'info@digitalhealthassurance.co.uk');
+                    }
+                    text(footer, '.footer-info_para', 'Your trusted partner, providing you with the solutions you need, so you can concentrate on what you are good at.');
+                    footer.querySelectorAll('.footer_bottom .text-color-dark').forEach(function (node) {
+                        node.textContent = '© 2026 The Digital Health Assurance Company';
+                    });
+                    var linkedin = footer.querySelector('.footer-menu_link-wrap.is-social .footer-menu_link:nth-child(3)');
+                    if (linkedin) linkedin.href = 'https://www.linkedin.com/company/the-digital-health-assurance-company/';
+                }
+                function setupAbout() {
+                    document.title = 'About | The Digital Health Assurance Company';
+                    var hero = document.querySelector('.section_hero');
+                    html(hero, '.about-hero_content h1', 'Our skilled team of experts');
+                    text(hero, '.about-hero_para', 'We have brought together a diverse range of experts and healthcare professionals to enable us to support your business. Our team has experience in academia, the pharmaceutical industry and the private and public healthcare sector.');
+                    text(hero, '.about-hero_info-item:nth-child(1) .count-number', '20+');
+                    text(hero, '.about-hero_info-item:nth-child(1) .about-hero_info-item_text', 'Years across healthcare');
+                    text(hero, '.about-hero_info-item:nth-child(2) .count-number', '2023');
+                    text(hero, '.about-hero_info-item:nth-child(2) .about-hero_info-item_text', 'Founded to improve digital health');
+                    text(hero, '.button_text', 'Contact Us');
+                    var heroButton = hero && hero.querySelector('.button_primary');
+                    if (heroButton) heroButton.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+
+                    var story = document.querySelector('.section_story');
+                    if (story) {
+                        text(story, '.section_tag div:last-child', 'Our areas of expertise');
+                        html(story, 'h2', 'Expertise across <span class="text-highlighted">clinical, regulatory and commercial healthcare</span>');
+                        text(story, '.about-story_para p', 'Our experts bridge service development, regulatory affairs, clinical operations, digital clinical safety, clinical trials, medical affairs and medical marketing.');
+                        var images = story.querySelector('.story-images_list');
+                        if (images) images.classList.add('digital-hidden');
+                        var content = story.querySelector('.about-story_content');
+                        if (content && !content.querySelector('.digital-expertise-grid')) {
+                            var grid = document.createElement('div');
+                            grid.className = 'digital-expertise-grid';
+                            ['Service development', 'Regulatory affairs', 'Clinical operations', 'Research and development', 'Medical marketing', 'Digital clinical safety', 'Clinical trials', 'Medical affairs'].forEach(function (label) {
+                                var card = document.createElement('div');
+                                card.className = 'digital-expertise-card';
+                                card.textContent = label;
+                                grid.appendChild(card);
+                            });
+                            content.appendChild(grid);
+                        }
+                    }
+
+                    ['.section_success', '.section_job', '.section_awards', '.section_location'].forEach(function (selector) {
+                        var node = document.querySelector(selector);
+                        if (node) node.classList.add('digital-hidden');
+                    });
+
+                    var team = document.querySelector('.section_team');
+                    if (team) {
+                        html(team, '.about-team_header-content h2', 'Dr Lucy Buckley, <span class="text-highlighted">PhD, MPharm, MRPharmS</span>');
+                        text(team, '.about-team_para', 'Founder');
+                        var cards = Array.prototype.slice.call(team.querySelectorAll('.team_list > .w-dyn-item'));
+                        cards.forEach(function (card, index) {
+                            if (index > 0) {
+                                card.classList.add('digital-hidden');
+                                return;
+                            }
+                            var image = card.querySelector('.team_image');
+                            if (image) {
+                                image.src = 'assets/img/lucy-buckley.png';
+                                image.removeAttribute('srcset');
+                                image.removeAttribute('sizes');
+                                image.alt = 'Dr Lucy Buckley';
+                            }
+                            text(card, '.team-menmber_name', 'Dr Lucy Buckley');
+                            text(card, '.team-menuber_designation', 'Founder');
+                        });
+                        var list = team.querySelector('.w-dyn-list');
+                        if (list && !team.querySelector('.digital-bio-card')) {
+                            var bio = document.createElement('div');
+                            bio.className = 'digital-bio-card';
+                            bio.innerHTML = '<h3>Founder</h3><p>Dr Lucy Buckley has a passion for improving quality of care and patient safety. She is a registered Pharmacist, holds a PhD from the University of Manchester and has over 20 years experience across diverse sectors of healthcare.</p><p>Her career spans academic drug discovery and development, the pharmaceutical industry and digital health entrepreneurship. She has also held clinical roles in both the NHS and private sector.</p><p>She is an experienced Care Quality Commission Registered Manager, an NHS-trained clinical safety officer, and has experience across healthcare regulation, data security and medical signatory work.</p><p>Her collective experiences have given her a holistic perspective, enabling her to form a bridge across clinical, governance, commercial and technology domains of healthcare. She founded The Digital Health Assurance Company in 2023 to improve quality of care in digital health whilst supporting businesses to grow, thrive and scale.</p>';
+                            list.parentNode.appendChild(bio);
+                        }
+                    }
+
+                    var cta = document.querySelector('.section_cta');
+                    if (cta) {
+                        html(cta, '.cta_content h2', 'Get in Touch for a <span class="text-highlighted">Confidential Discussion</span>');
+                        text(cta, '.cta_content p', 'Please get in touch for a confidential, no obligation discussion to understand more about how we can help you.');
+                    }
+                    sharedFooter();
+                }
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupAbout);
+                else setupAbout();
+            })();
+        </script>
+
 <script>
-/* Aria Care image guard: any failed/empty image -> on-brand gradient SVG so nothing ever looks broken. */
+/* Digital Health Assurance image guard: any failed/empty image -> on-brand gradient SVG so nothing ever looks broken. */
 (function(){
   function ph(label){
-    var t=(label||'Aria Care Partners').replace(/[<>&]/g,'').slice(0,22);
+    var t=(label||'The Digital Health').replace(/[<>&]/g,'').slice(0,22);
     var svg='<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">'
      +'<defs><linearGradient id="lg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">'
-     +'<stop offset="0" stop-color="#6c4bb6"/><stop offset="1" stop-color="#1b0f34"/></linearGradient></defs>'
+     +'<stop offset="0" stop-color="#f8dc7c"/><stop offset="1" stop-color="#8a520f"/></linearGradient></defs>'
      +'<rect width="1280" height="720" fill="url(#lg)"/>'
      +'<circle cx="640" cy="298" r="44" fill="#fff" opacity="0.9"/>'
      +'<text x="640" y="436" fill="#fff" font-family="Sora,Arial" font-size="40" font-weight="600" text-anchor="middle" opacity="0.92">'+t+'</text></svg>';

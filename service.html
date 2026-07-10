@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>Our Services | Aria Care Partners</title>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." name="description"/>
-        <meta content="Our Services | Aria Care Partners" property="og:title"/>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." property="og:description"/>
+        <title>Services | The Digital Health Assurance Company</title>
+        <meta content="Healthcare advisory services spanning strategy, investors, mergers and acquisitions, regulatory, service development, marketing and clinical safety." name="description"/>
+        <meta content="Services | The Digital Health Assurance Company" property="og:title"/>
+        <meta content="Healthcare advisory services spanning strategy, investors, mergers and acquisitions, regulatory, service development, marketing and clinical safety." property="og:description"/>
         <meta content="assets/img/gen_dentist-examining-patients-teeth-close-up_1.jpg" property="og:image"/>
-        <meta content="Our Services | Aria Care Partners" name="twitter:title"/>
-        <meta content="Aria Care Partners brings onsite dental, vision, hearing, and podiatry care to residents of skilled-nursing and senior living communities nationwide. Trusted by facilities for over two decades. Schedule a consult today." name="twitter:description"/>
+        <meta content="Services | The Digital Health Assurance Company" name="twitter:title"/>
+        <meta content="Healthcare advisory services spanning strategy, investors, mergers and acquisitions, regulatory, service development, marketing and clinical safety." name="twitter:description"/>
         <meta content="assets/img/gen_dentist-examining-patients-teeth-close-up_1.jpg" name="twitter:image"/>
         <meta property="og:type" content="website"/>
         <meta content="summary_large_image" name="twitter:card"/>
@@ -46,7 +46,7 @@
             <div data-collapse="medium" data-animation="default" data-duration="400" fs-scrolldisable-element="smart-nav" data-easing="ease" data-easing2="ease" role="banner" class="navbar_wrap w-nav">
                 <div class="navbar_container">
                     <a href="index.html" class="navbar_logo w-nav-brand">
-                        <img loading="eager" src="assets/img/lumora-logo-dark.svg" alt="Aria Care logo" class="logo_image"/>
+                        <img loading="eager" src="assets/img/digital-health-assurance-logo.png" alt="The Digital Health Assurance Company logo" class="logo_image"/>
                     </a>
                     <div class="navbar-content_wrap">
                         <nav role="navigation" class="navbar_menu w-nav-menu">
@@ -795,7 +795,7 @@
                     <div class="container">
                         <div data-w-id="a1b41f4f-e78b-52e6-2492-2ff9a80f251e" class="footer_header">
                             <a id="w-node-_69a072d1-69e6-8783-2548-858b3e84bf4f-4af74ce9" href="index.html" class="footer_brand w-inline-block">
-                                <img src="assets/img/lumora-logo-dark.svg" loading="lazy" alt="Aria Care logo" class="brand_logo"/>
+                                <img src="assets/img/digital-health-assurance-logo.png" loading="lazy" alt="The Digital Health Assurance Company logo" class="brand_logo"/>
                             </a>
                             <div class="footer-contact_wrap">
                                 <a href="tel:(877) 674-1211" class="footer-contact_link w-inline-block">
@@ -1025,14 +1025,147 @@
 
 
     
+        <script>
+            (function () {
+                var services = [
+                    {
+                        title: 'Strategy and growth',
+                        copy: 'We help you to drive business growth and value creation whilst enabling you to move at pace in emerging regulatory and compliance-heavy landscapes.',
+                        tags: ['Growth strategy', 'Value creation', 'Regulated markets']
+                    },
+                    {
+                        title: 'Investors',
+                        copy: 'We help with due diligence, portfolio review and implementation of board assurance frameworks, as well as working with businesses to accelerate growth.',
+                        tags: ['Due diligence', 'Portfolio review', 'Board assurance']
+                    },
+                    {
+                        title: 'Mergers and acquisitions',
+                        copy: 'We support pre-diligence and due diligence to help you identify risks and make informed decisions that contribute to transaction success, then support seamless integration and sustained growth thereafter.',
+                        tags: ['Pre-diligence', 'Risk review', 'Integration']
+                    },
+                    {
+                        title: 'Your critical friend',
+                        copy: 'If you do not have a healthcare professional in your founding team, our team can provide in-depth knowledge of the healthcare industry, a safe place to test decisions, and guidance through risk management and best practices.',
+                        tags: ['Founder support', 'Risk management', 'Best practice']
+                    },
+                    {
+                        title: 'Service development',
+                        copy: 'We help you navigate healthcare service development with a holistic approach that includes governance, patient safety, IT development and commercialisation.',
+                        tags: ['Governance', 'Patient safety', 'Commercialisation']
+                    },
+                    {
+                        title: 'Regulatory',
+                        copy: 'We help you understand and navigate your regulatory requirements so you can execute your growth strategy with certainty.',
+                        tags: ['Compliance', 'CQC readiness', 'Regulatory strategy']
+                    },
+                    {
+                        title: 'Marketing',
+                        copy: 'If you need a medical advisor who understands marketing and its compliance requirements, our team has a wealth of expertise in this field.',
+                        tags: ['Medical review', 'Messaging', 'Compliance']
+                    },
+                    {
+                        title: 'Clinical safety officer',
+                        copy: 'Our trained Clinical Safety Officers can support the clinical risk management processes, activities and documentation required for digital solutions to comply with relevant legal requirements.',
+                        tags: ['Clinical safety', 'Risk management', 'Documentation']
+                    }
+                ];
+                function text(root, selector, value) {
+                    var node = root && root.querySelector(selector);
+                    if (node) node.textContent = value;
+                }
+                function html(root, selector, value) {
+                    var node = root && root.querySelector(selector);
+                    if (node) node.innerHTML = value;
+                }
+                function sharedFooter() {
+                    document.querySelectorAll('.navbar_button .button_primary, .section_cta .button_primary, .footer_info .button_primary').forEach(function (link) {
+                        link.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+                    });
+                    document.querySelectorAll('.navbar_button .button_text, .section_cta .button_text, .footer_info .button_text').forEach(function (node) {
+                        node.textContent = 'Contact Us';
+                    });
+                    var footer = document.querySelector('.section_footer');
+                    if (!footer) return;
+                    var email = footer.querySelector('a[href^="mailto:"]');
+                    if (email) {
+                        email.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Support';
+                        text(email, 'div', 'info@digitalhealthassurance.co.uk');
+                    }
+                    text(footer, '.footer-info_para', 'Your trusted partner, providing you with the solutions you need, so you can concentrate on what you are good at.');
+                    footer.querySelectorAll('.footer_bottom .text-color-dark').forEach(function (node) {
+                        node.textContent = '© 2026 The Digital Health Assurance Company';
+                    });
+                    var linkedin = footer.querySelector('.footer-menu_link-wrap.is-social .footer-menu_link:nth-child(3)');
+                    if (linkedin) linkedin.href = 'https://www.linkedin.com/company/the-digital-health-assurance-company/';
+                }
+                function setupServicesPage() {
+                    document.title = 'Services | The Digital Health Assurance Company';
+                    var hero = document.querySelector('.section_hero');
+                    html(hero, '.service-hero_content h1', 'Our services');
+                    text(hero, '.service-hero_para', 'Our team of solution-driven industry experts can work with you to drive business growth whilst ensuring you deliver high quality patient care.');
+                    text(hero, '.button_text', 'Contact Us');
+                    var heroButton = hero && hero.querySelector('.button_primary');
+                    if (heroButton) heroButton.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+
+                    var serviceSection = document.querySelector('.section_service.is-service-showcase');
+                    if (serviceSection) {
+                        html(serviceSection, '.service_header h2', 'Services for <span class="text-highlighted">healthcare decisions that matter</span>');
+                        var list = serviceSection.querySelector('.collection-list');
+                        if (list) {
+                            var items = Array.prototype.slice.call(list.children);
+                            while (items.length < services.length) {
+                                var clone = items[items.length - 1].cloneNode(true);
+                                list.appendChild(clone);
+                                items.push(clone);
+                            }
+                            items.forEach(function (item, index) {
+                                if (!services[index]) {
+                                    item.classList.add('digital-hidden');
+                                    return;
+                                }
+                                var service = services[index];
+                                text(item, '.service-trigger_title', service.title);
+                                text(item, '.service-trigger_para', service.copy);
+                                text(item, '.service-item_small-text', 'Focus areas');
+                                var tags = item.querySelector('.service-tag_wrap');
+                                if (tags) {
+                                    tags.innerHTML = service.tags.map(function (tag) {
+                                        return '<div class="service_tag"><div class="service-tag_icon">✓</div><div>' + tag + '</div></div>';
+                                    }).join('');
+                                }
+                            });
+                        }
+                        if (!serviceSection.querySelector('.digital-service-additional')) {
+                            var additional = document.createElement('div');
+                            additional.className = 'digital-service-additional';
+                            additional.innerHTML = '<h3>Additional Services</h3><p>If there is something else you need help with, please reach out to us. Our skilled team of experts have decades of experience across the healthcare landscape; from drug discovery, through the product lifecycle and launch to providing clinical care to patients, building healthcare businesses and developing health tech.</p>';
+                            serviceSection.querySelector('.section_component').appendChild(additional);
+                        }
+                    }
+
+                    var faq = document.querySelector('.section_faq');
+                    if (faq) faq.classList.add('digital-hidden');
+
+                    var cta = document.querySelector('.section_cta');
+                    if (cta) {
+                        html(cta, '.cta_content h2', 'Get in Touch for a <span class="text-highlighted">Confidential Discussion</span>');
+                        text(cta, '.cta_content p', 'Please get in touch for a confidential, no obligation discussion to understand more about how we can help you.');
+                    }
+                    sharedFooter();
+                }
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupServicesPage);
+                else setupServicesPage();
+            })();
+        </script>
+
 <script>
-/* Aria Care image guard: any failed/empty image -> on-brand gradient SVG so nothing ever looks broken. */
+/* Digital Health Assurance image guard: any failed/empty image -> on-brand gradient SVG so nothing ever looks broken. */
 (function(){
   function ph(label){
-    var t=(label||'Aria Care Partners').replace(/[<>&]/g,'').slice(0,22);
+    var t=(label||'The Digital Health').replace(/[<>&]/g,'').slice(0,22);
     var svg='<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">'
      +'<defs><linearGradient id="lg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">'
-     +'<stop offset="0" stop-color="#6c4bb6"/><stop offset="1" stop-color="#1b0f34"/></linearGradient></defs>'
+     +'<stop offset="0" stop-color="#f8dc7c"/><stop offset="1" stop-color="#8a520f"/></linearGradient></defs>'
      +'<rect width="1280" height="720" fill="url(#lg)"/>'
      +'<circle cx="640" cy="298" r="44" fill="#fff" opacity="0.9"/>'
      +'<text x="640" y="436" fill="#fff" font-family="Sora,Arial" font-size="40" font-weight="600" text-anchor="middle" opacity="0.92">'+t+'</text></svg>';

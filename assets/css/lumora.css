@@ -2061,7 +2061,7 @@ textarea.w-input, textarea.w-select {
 
 :root {
   --_font---font-family--primary: Sora, sans-serif;
-  --primitive-color--primary-900: #1b0f34;
+  --primitive-color--primary-900: #2d1b08;
   --_font---font-size-semantics--body-base: var(--_font---font-size-primitive--text-base);
   --_font---line-height--145: 145%;
   --_font---font-weight--400: 400;
@@ -2101,11 +2101,11 @@ textarea.w-input, textarea.w-select {
   --_size-variables---element-spacing--10xl: 48px;
   --_size-variables---border-radius--2xl: 16px;
   --primitive-color--neutral-0: white;
-  --primitive-color--primary-500: #6c4bb6;
+  --primitive-color--primary-500: #d6a84f;
   --_size-variables---element-spacing--5xl: 30px;
   --_size-variables---border-radius--8xl: 99px;
   --_size-variables---border-radius--xl: 12px;
-  --primitive-color--primary-700: #2e1b54;
+  --primitive-color--primary-700: #8a520f;
   --primitive-color--black: black;
   --primitive-color--neutral-400: #c5c5c5;
   --_size-variables---element-spacing--4xl: 28px;
@@ -9092,6 +9092,13 @@ footer{border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
 @media(min-width:992px){.our-info_wrap{margin-top:-165px;}}
 @media(max-width:991px){.padding-home-hero{padding-top:120px!important;}.our-info_wrap{margin-top:24px;}}
 
+/* ===== Digital Health Assurance hero refinements ===== */
+.home-hero_content{margin-bottom:0;}
+.section_story > .section-padding.padding-120x120{padding-top:64px;}
+.navbar_logo{max-width:72px;height:56px;display:flex;align-items:center;}
+.navbar_logo .logo_image{width:100%;height:100%;object-fit:contain;}
+@media(max-width:767px){.navbar_logo{max-width:58px;height:46px;}.section_story > .section-padding.padding-120x120{padding-top:48px;}}
+
 /* ===== Premium DARK footer (was bland cream) ===== */
 .section_footer{background:var(--primitive-color--primary-900,#1b0f34)!important;border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
 .section_footer, .section_footer .text-color-dark, .section_footer p, .section_footer div, .section_footer a{color:#cdd8da!important;}
@@ -9126,3 +9133,67 @@ footer{border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
 
 /* Safety: reveal/portrait/blog images must never stay blurred (no leftover IX2 blur) */
 .team_image,.blog-item_image,.our-story_image,.about-hero_image,.home-value_image{filter:none !important;-webkit-filter:none !important;}
+
+/* ===== Digital Health Assurance gold palette and hero composition ===== */
+:root{
+  --primitive-color--primary-900:#2d1b08;
+  --primitive-color--primary-800:#4a2d0d;
+  --primitive-color--primary-700:#704513;
+  --primitive-color--primary-600:#a66f29;
+  --primitive-color--primary-500:#d6a84f;
+  --primitive-color--primary-400:#f4d778;
+}
+.section_hero.is-home-hero{min-height:960px;display:flex;align-items:center;}
+.section_hero.is-home-hero > .section-padding.padding-home-hero{width:100%;padding-top:96px!important;padding-bottom:96px!important;}
+.home-hero_content{margin-top:0;margin-bottom:0;}
+.hero_overlay.is-gradient{background-image:linear-gradient(157deg,rgba(45,27,8,.93) 16%,rgba(45,27,8,.16) 48%,rgba(214,168,79,.68) 100%);}
+.text-highlighted{background-image:linear-gradient(94deg,#f4d778,#c88d35);}
+.testimonial-slider_card{background-image:linear-gradient(160deg,rgba(45,27,8,.88),rgba(200,141,53,.80)),url('../img/gen_testimonial-bg.jpg')!important;}
+.section_team .text-highlighted{color:#f4d778!important;}
+@media(max-width:991px){
+  .section_hero.is-home-hero{min-height:auto;}
+  .section_hero.is-home-hero > .section-padding.padding-home-hero{padding-top:112px!important;padding-bottom:84px!important;}
+}
+
+/* Six-service desktop scroll */
+@media(min-width:992px){.section_service .service_sticky-trigger{height:600vh;}}
+
+/* Digital Health Assurance team, values and testimonials */
+.section_team .team_list{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-left:auto;margin-right:auto;}
+.section_team .team_list > .w-dyn-item:nth-child(n+3){display:none!important;}
+.section_team .team-menuber_social{display:none!important;}
+.section_team .team_image{object-position:center top;}
+.testimonial_slider,.testimonial-slider_mask,.testimonial-slider_slide{height:auto!important;}
+.testimonial-slider_mask{background:transparent!important;}
+.testimonial-slider_card{height:auto!important;min-height:100%;gap:28px;}
+.testimonial-slider_quotes{font-size:16px;line-height:1.55;}
+.testimonial-author_designation{color:rgba(255,255,255,.82)!important;}
+.section_cta{background-image:linear-gradient(115deg,rgba(45,27,8,.88),rgba(45,27,8,.58)),url('../img/gen_about-hero-image.jpg')!important;}
+.section_footer{border-top-color:var(--primitive-color--primary-500,#d6a84f)!important;}
+.section_footer .footer_brand{width:92px;height:68px;}
+.section_footer .brand_logo{width:100%;height:100%;object-fit:contain;}
+.section_footer .footer-external_link{color:var(--primitive-color--primary-500,#d6a84f)!important;}
+@media(max-width:767px){
+  .section_team .team_list{grid-template-columns:1fr;max-width:420px;}
+  .testimonial-slider_card{padding:28px!important;}
+  .testimonial-slider_quotes{font-size:15px;}
+  .section_footer .footer_brand{width:78px;height:58px;}
+}
+
+/* Global Digital Health Assurance cleanup */
+.navbar_dropdown{display:none!important;}
+.section_footer .footer_menu .footer-links-column:nth-child(2){display:none!important;}
+.section_footer .footer-menu_link-wrap.is-social .footer-menu_link:nth-child(1),
+.section_footer .footer-menu_link-wrap.is-social .footer-menu_link:nth-child(2),
+.section_footer .footer-menu_link-wrap.is-social .footer-menu_link:nth-child(4){display:none!important;}
+.digital-hidden{display:none!important;}
+.digital-expertise-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:32px;}
+.digital-expertise-card{border:1px solid rgba(214,168,79,.35);border-radius:16px;padding:18px;background:rgba(255,255,255,.88);color:var(--primitive-color--primary-900,#2d1b08);font-weight:600;text-align:center;}
+.digital-bio-card{max-width:980px;margin:40px auto 0;padding:32px;border-radius:22px;background:#fff;box-shadow:0 22px 60px rgba(45,27,8,.12);color:var(--primitive-color--gray-800,#555);}
+.digital-bio-card h3{margin-bottom:8px;color:var(--primitive-color--primary-900,#2d1b08);}
+.digital-bio-card p{margin-top:14px;}
+.digital-service-additional{margin-top:32px;padding:28px;border-radius:20px;background:#fff7e5;color:var(--primitive-color--primary-900,#2d1b08);}
+.digital-service-additional h3{margin-bottom:10px;}
+.section_service.is-service-showcase .service-item_body .button-container{display:none!important;}
+@media(max-width:991px){.digital-expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:479px){.digital-expertise-grid{grid-template-columns:1fr;}.digital-bio-card{padding:24px;}}
