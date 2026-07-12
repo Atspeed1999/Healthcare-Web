@@ -59,6 +59,9 @@
                             <a href="service.html" class="navbar_link w-inline-block">
                                 <div>Services</div>
                             </a>
+                            <a href="contact.html" class="navbar_link w-inline-block">
+                                <div>Contact</div>
+                            </a>
                             
                             <div data-delay="200" data-hover="false" class="navbar_dropdown w-dropdown">
                                 <div class="navbar-dropdown_toggle w-dropdown-toggle">
@@ -1413,6 +1416,9 @@
                                         <a href="service.html" class="footer-menu_link w-inline-block">
                                             <div>Services</div>
                                         </a>
+                                        <a href="contact.html" class="footer-menu_link w-inline-block">
+                                            <div>Contact</div>
+                                        </a>
                                         
                                     </div>
                                 </div>
@@ -1656,13 +1662,13 @@
                         title: 'Digital clinical safety',
                         description: 'Our NHS-trained Clinical Safety Officers support the clinical risk-management activities and documentation required for health IT. This can include applicability and gap review, hazard workshops, Clinical Risk Management Plans, Hazard Logs, Clinical Safety Case Reports and ongoing safety governance.',
                         tags: ['DCB0129', 'DCB0160', 'CSO support', 'Hazard management'],
-                        colour: '#eacb8d', image: 'assets/img/gen_service-thumbnail-image-2.jpg'
+                        colour: '#eacb8d', image: 'assets/img/gen_service-thumbnail-image-5.jpg'
                     },
                     {
                         title: 'Medical marketing',
                         description: 'When your marketer needs medical context—or your medical advisor needs to understand growth—we bridge the gap. We help shape accurate, responsible messaging that is clear enough to build trust and differentiated enough to create demand.',
                         tags: ['Medical review', 'Messaging', 'Compliance'],
-                        colour: '#e3bd76', image: 'assets/img/gen_service-thumbnail-image-3.jpg'
+                        colour: '#e3bd76', image: 'assets/img/gen_service-thumbnail-image-6.jpg'
                     }
                 ];
 
@@ -1741,23 +1747,28 @@
                 var values = [
                     {
                         title: 'Access to Industry Leaders',
-                        copy: 'Our team is comprised of scientists, healthcare and regulatory experts, and registered healthcare professionals at the forefront of both independent and NHS healthcare services.'
+                        copy: 'Our team is comprised of scientists, healthcare and regulatory experts, and registered healthcare professionals at the forefront of both independent and NHS healthcare services.',
+                        image: 'assets/img/gen_hero-3.jpg'
                     },
                     {
                         title: "We've Been There and Done It",
-                        copy: 'We have raised investment, developed technology and launched businesses. We have worked with regulators to develop regulatory frameworks, and have experience of executive and non-executive roles.'
+                        copy: 'We have raised investment, developed technology and launched businesses. We have worked with regulators to develop regulatory frameworks, and have experience of executive and non-executive roles.',
+                        image: 'assets/img/gen_our-story-image-4.jpg'
                     },
                     {
                         title: 'Our Collective Experiences',
-                        copy: 'Our experience spans from drug discovery and development, through clinical trials and product lifecycle to launch. We have founded both digital GP services and specialist clinics.'
+                        copy: 'Our experience spans from drug discovery and development, through clinical trials and product lifecycle to launch. We have founded both digital GP services and specialist clinics.',
+                        image: 'assets/img/gen_value-collective.jpg'
                     },
                     {
                         title: 'Fast Responses',
-                        copy: 'We understand that when you need support, you want it quickly. We pride ourselves on fast responses, efficiency and quick turn-around times.'
+                        copy: 'We understand that when you need support, you want it quickly. We pride ourselves on fast responses, efficiency and quick turn-around times.',
+                        image: 'assets/img/gen_story-image-2.jpg'
                     },
                     {
                         title: 'Your Critical Friend',
-                        copy: "If you don't have a healthcare professional in your founding team, we provide a safe place for you and adeptly guide you through risk management and best practices."
+                        copy: "If you don't have a healthcare professional in your founding team, we provide a safe place for you and adeptly guide you through risk management and best practices.",
+                        image: 'assets/img/gen_home-value-image.jpg'
                     }
                 ];
 
@@ -1844,11 +1855,38 @@
                         var heading = valueSection.querySelector('.home-value_header h2');
                         if (heading) heading.innerHTML = "We've Been There and Done It, Because <span class=\"text-highlighted\">Experience Matters</span>";
                         setText(valueSection, '.home-value_header-para p', 'Driven by our commitment to excellence, integrity and collaboration, our mission is to create an innovative healthcare landscape where the highest quality patient care and sustainable business growth coexist harmoniously.');
-                        Array.prototype.slice.call(valueSection.querySelectorAll('.tabs-accordion_item')).forEach(function (item, index) {
+                        var valueImg = valueSection.querySelector('.home-value_image');
+                        function swapValueImage(idx){ if (valueImg && values[idx] && values[idx].image){ valueImg.src = values[idx].image; valueImg.removeAttribute('srcset'); valueImg.removeAttribute('sizes'); } }
+                        var chevronSVG = '<div class="value-chevron" style="margin-left:auto;display:flex;align-items:center;flex:0 0 auto;transition:transform .3s ease;color:currentColor;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+                        var accItems = Array.prototype.slice.call(valueSection.querySelectorAll('.tabs-accordion_item'));
+                        accItems.forEach(function (item, index) {
                             if (!values[index]) return;
                             setText(item, '.tabs-accordion_header-title', values[index].title);
                             setText(item, '.tabs-accordion_info-inner p', values[index].copy);
+                            var header = item.querySelector('.tabs-accordion_header');
+                            if (header){
+                                header.style.display='flex'; header.style.alignItems='center'; header.style.cursor='pointer';
+                                if (!header.querySelector('.value-chevron')) header.insertAdjacentHTML('beforeend', chevronSVG);
+                                header.addEventListener('click', function(){
+                                    swapValueImage(index);
+                                    accItems.forEach(function(it){ var c=it.querySelector('.value-chevron'); if(c) c.style.transform=''; });
+                                    var ch=header.querySelector('.value-chevron'); if(ch) ch.style.transform='rotate(180deg)';
+                                });
+                            }
                         });
+                        swapValueImage(0);
+                        var firstChevron = valueSection.querySelector('.tabs-accordion_item .value-chevron');
+                        if (firstChevron) firstChevron.style.transform='rotate(180deg)';
+                        if (!valueSection.querySelector('.value-contact-cta')){
+                            var ctaHost = valueSection.querySelector('.tabs-accordion') || valueSection.querySelector('.home-value_content') || valueSection.querySelector('.container');
+                            if (ctaHost){
+                                var vcta = document.createElement('div');
+                                vcta.className='value-contact-cta';
+                                vcta.style.cssText='margin-top:36px;display:flex;justify-content:flex-start;';
+                                vcta.innerHTML='<a data-wf--button-primary--variant="base" href="contact.html" class="button_primary w-inline-block" style="text-decoration:none;"><div class="button_inner"><div class="button-text_wrap"><div class="button_text">Contact Us</div></div><div class="button-icon_group"><div class="button-icon_wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 12 12" fill="none" vector-effect="non-scaling-stroke" preserveAspectRatio="none"><path d="M4.70139 0.75L10.5303 0.750201L10.5303 6.55165M0.530334 10.75L10.2896 0.990932" stroke="currentColor" stroke-width="1.5"></path></svg></div><div class="button-icon_wrap is-hover"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 12 12" fill="none" vector-effect="non-scaling-stroke" preserveAspectRatio="none"><path d="M4.70139 0.75L10.5303 0.750201L10.5303 6.55165M0.530334 10.75L10.2896 0.990932" stroke="currentColor" stroke-width="1.5"></path></svg></div></div></div></a>';
+                                ctaHost.appendChild(vcta);
+                            }
+                        }
                     }
 
                     Array.prototype.slice.call(document.querySelectorAll('.testimonial-slider_slide')).forEach(function (slide, index) {
@@ -1905,7 +1943,7 @@
                     if (ctaSection) {
                         var ctaHeading = ctaSection.querySelector('.cta_content h2');
                         if (ctaHeading) ctaHeading.innerHTML = 'Get in Touch for a <span class="text-highlighted">Confidential Discussion</span>';
-                        setText(ctaSection, '.cta_content p', 'A confidential, no obligation discussion to understand more about how we can help you.');
+                        setText(ctaSection, '.cta_content p', 'A confidential, no obligation discussion to understand more about how we can help you.');
                         setText(ctaSection, '.button_text', 'Contact Us');
                         var ctaLink = ctaSection.querySelector('.button_primary');
                         if (ctaLink) ctaLink.href = 'contact.html';
