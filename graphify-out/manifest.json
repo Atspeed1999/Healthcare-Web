@@ -1,0 +1,47 @@
+{
+  "/Users/atspeed/Healthcare-Web/404.html": {
+    "mtime": 1783866093.6552937,
+    "ast_hash": "d909e6dda3be91acad72b019d8aea95b",
+    "semantic_hash": "d909e6dda3be91acad72b019d8aea95b"
+  },
+  "/Users/atspeed/Healthcare-Web/about.html": {
+    "mtime": 1783866093.6556504,
+    "ast_hash": "dd95bfbc4f806272fb99b4cff23ee92d",
+    "semantic_hash": "dd95bfbc4f806272fb99b4cff23ee92d"
+  },
+  "/Users/atspeed/Healthcare-Web/contact.html": {
+    "mtime": 1783866093.728718,
+    "ast_hash": "dd2b99c7152a2d5c54bd572b5c639d0b",
+    "semantic_hash": "dd2b99c7152a2d5c54bd572b5c639d0b"
+  },
+  "/Users/atspeed/Healthcare-Web/cookies.html": {
+    "mtime": 1783866093.7289455,
+    "ast_hash": "a9e9dc5c1c2fe4c92687ee33eec82a13",
+    "semantic_hash": "a9e9dc5c1c2fe4c92687ee33eec82a13"
+  },
+  "/Users/atspeed/Healthcare-Web/index.html": {
+    "mtime": 1783866093.729056,
+    "ast_hash": "d31e6595db66eb58dffa462772fcaffb",
+    "semantic_hash": "d31e6595db66eb58dffa462772fcaffb"
+  },
+  "/Users/atspeed/Healthcare-Web/licenses.html": {
+    "mtime": 1783866093.7292554,
+    "ast_hash": "73c8156afe029ff31479b7c25def66ee",
+    "semantic_hash": "73c8156afe029ff31479b7c25def66ee"
+  },
+  "/Users/atspeed/Healthcare-Web/privacy.html": {
+    "mtime": 1783866093.7294571,
+    "ast_hash": "d43396163361f81dc8b402f31ac33b05",
+    "semantic_hash": "d43396163361f81dc8b402f31ac33b05"
+  },
+  "/Users/atspeed/Healthcare-Web/service.html": {
+    "mtime": 1783866093.7295623,
+    "ast_hash": "55b7985c010c065f7c180f8d5c4bd3ae",
+    "semantic_hash": "55b7985c010c065f7c180f8d5c4bd3ae"
+  },
+  "/Users/atspeed/Healthcare-Web/terms.html": {
+    "mtime": 1783866093.7297606,
+    "ast_hash": "59422ff8d5a3f0af3936f3769b078bfe",
+    "semantic_hash": "59422ff8d5a3f0af3936f3769b078bfe"
+  }
+}
