@@ -204,7 +204,10 @@
                                         <div class="contact-field"><label for="phone">Phone number</label><input id="phone" type="tel" autocomplete="tel"/></div>
                                         <div class="contact-field"><label for="company">Company / organisation</label><input id="company" type="text" autocomplete="organization"/></div>
                                         <div class="contact-field"><label for="message">Message <span>*</span></label><textarea id="message" required placeholder="Tell us a little about your business and how we can help."></textarea></div>
-                                        <button type="submit" class="contact-submit">Send enquiry <span>&#8599;</span></button>
+                                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY"/>
+                                        <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
+                                        <button type="submit" class="contact-submit"><span class="contact-submit_label">Send enquiry <span>&#8599;</span></span></button>
+                                        <p class="contact-formstatus" role="status" aria-live="polite"></p>
                                         <p class="contact-formnote">Prefer email? Write to us at <a href="mailto:info@digitalhealthassurance.co.uk">info@digitalhealthassurance.co.uk</a></p>
                                     </form>
                                 </div>
@@ -240,6 +243,10 @@
                     .section_contact .contact-submit:hover{background:#c9922e;}
                     .section_contact .contact-formnote{font-size:13px;color:#7a6a58;text-align:center;margin-top:14px;}
                     .section_contact .contact-formnote a{color:#c9922e;font-weight:600;}
+                    .section_contact .contact-submit:disabled{opacity:.65;cursor:not-allowed;}
+                    .section_contact .contact-formstatus{font-size:14px;text-align:center;margin:14px 0 0;min-height:1.2em;}
+                    .section_contact .contact-formstatus.is-success{color:#2f7a4d;font-weight:600;}
+                    .section_contact .contact-formstatus.is-error{color:#b4402a;font-weight:600;}
                     .section_contact .contact-aside h3{font-size:18px;font-weight:600;margin:6px 0 6px;}
                     .section_contact .contact-aside>p{color:#7a6a58;font-size:15.5px;margin:0 0 26px;}
                     .section_contact .contact-info-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;}
@@ -254,7 +261,59 @@
                     @media(max-width:520px){.section_contact .contact-row2{grid-template-columns:1fr;}}
                 </style>
                 <script>
-                    (function(){var form=document.getElementById('contactForm');if(!form)return;form.addEventListener('submit',function(e){e.preventDefault();var g=function(id){return (document.getElementById(id).value||'').trim();};var fn=g('fname'),ln=g('lname'),em=g('email'),ph=g('phone'),co=g('company'),ms=g('message');if(!fn||!ln||!em||!ms){alert('Please complete the required fields.');return;}var body='Name: '+fn+' '+ln+'\nEmail: '+em+'\nPhone: '+(ph||'-')+'\nCompany: '+(co||'-')+'\n\nMessage:\n'+ms;window.location.href='mailto:info@digitalhealthassurance.co.uk?subject='+encodeURIComponent('Website enquiry from '+fn+' '+ln)+'&body='+encodeURIComponent(body);});})();
+                    (function(){
+                        var form=document.getElementById('contactForm');
+                        if(!form)return;
+                        var statusEl=form.querySelector('.contact-formstatus');
+                        var submitBtn=form.querySelector('.contact-submit');
+                        var submitLabel=form.querySelector('.contact-submit_label');
+                        var g=function(id){return (document.getElementById(id).value||'').trim();};
+                        var setStatus=function(msg,isError){
+                            statusEl.textContent=msg;
+                            statusEl.className='contact-formstatus'+(isError?' is-error':' is-success');
+                        };
+                        form.addEventListener('submit',function(e){
+                            e.preventDefault();
+                            var fn=g('fname'),ln=g('lname'),em=g('email'),ph=g('phone'),co=g('company'),ms=g('message');
+                            if(!fn||!ln||!em||!ms){setStatus('Please complete the required fields.',true);return;}
+                            var accessKey=form.querySelector('[name="access_key"]').value;
+                            if(!accessKey||accessKey==='YOUR_WEB3FORMS_ACCESS_KEY'){
+                                setStatus('Form is not yet connected. Please email us directly for now.',true);
+                                return;
+                            }
+                            submitBtn.disabled=true;
+                            submitLabel.textContent='Sending…';
+                            setStatus('',false);
+                            fetch('https://api.web3forms.com/submit',{
+                                method:'POST',
+                                headers:{'Content-Type':'application/json',Accept:'application/json'},
+                                body:JSON.stringify({
+                                    access_key:accessKey,
+                                    subject:'Website enquiry from '+fn+' '+ln,
+                                    from_name:fn+' '+ln,
+                                    first_name:fn,
+                                    last_name:ln,
+                                    email:em,
+                                    phone:ph||'-',
+                                    company:co||'-',
+                                    message:ms,
+                                    botcheck:form.querySelector('[name="botcheck"]').checked
+                                })
+                            }).then(function(res){return res.json();}).then(function(data){
+                                if(data.success){
+                                    form.reset();
+                                    setStatus('Thanks — your message has been sent. We\'ll be in touch within one business day.',false);
+                                }else{
+                                    setStatus('Something went wrong sending your message. Please try emailing us directly.',true);
+                                }
+                            }).catch(function(){
+                                setStatus('Something went wrong sending your message. Please try emailing us directly.',true);
+                            }).finally(function(){
+                                submitBtn.disabled=false;
+                                submitLabel.textContent='Send enquiry ↗';
+                            });
+                        });
+                    })();
                 </script>
             </main>
             <footer class="section_footer">
