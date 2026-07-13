@@ -1993,36 +1993,6 @@
 })();
 </script>
 <script>
-/* Our story: swap the Webflow slider (rewinds at the wrap point) for a seamless marquee. */
-(function(){
-  function initStoryMarquee(){
-    var slider = document.querySelector('.section_story .story_slider');
-    if (!slider) return;
-    var items = slider.querySelectorAll('.our-story_item');
-    if (!items.length) return;
-    var marquee = document.createElement('div');
-    marquee.className = 'digital-story-marquee';
-    var track = document.createElement('div');
-    track.className = 'digital-story-track';
-    [false, true].forEach(function(hidden){
-      var set = document.createElement('div');
-      set.className = 'digital-story-set';
-      if (hidden) set.setAttribute('aria-hidden', 'true');
-      Array.prototype.forEach.call(items, function(item){
-        var clone = item.cloneNode(true);
-        clone.querySelectorAll('img').forEach(function(im){ im.loading = 'eager'; });
-        set.appendChild(clone);
-      });
-      track.appendChild(set);
-    });
-    marquee.appendChild(track);
-    slider.parentNode.replaceChild(marquee, slider);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStoryMarquee);
-  else initStoryMarquee();
-})();
-</script>
-<script>
 /* Failsafe: if the hero heading's split-text entrance animation stalls (seen on mobile), snap it fully visible. */
 setTimeout(function(){
   document.querySelectorAll('[hero-text-split]').forEach(function(el){

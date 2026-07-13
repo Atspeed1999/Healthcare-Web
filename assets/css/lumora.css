@@ -9227,13 +9227,3 @@ footer{border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
   .section_service .service_item{height:calc(100vh - 290px);min-height:420px;padding:clamp(24px, 4vh, 48px);}
   .section_service .service_content{grid-row-gap:24px;grid-column-gap:24px;}
 }
-
-/* Our-story: continuous marquee replacing the Webflow slider (which rewinds/blanks at
-   the wrap point). Two identical sets drift left; -50% lands exactly on the seam. */
-.digital-story-marquee{overflow:hidden;width:100%;}
-.digital-story-track{display:flex;width:max-content;animation:digital-story-scroll 60s linear infinite;}
-.digital-story-set{display:flex;gap:32px;margin-right:32px;flex:0 0 auto;}
-.digital-story-set .our-story_item{flex:0 0 auto;width:min(820px, 88vw);}
-.digital-story-marquee:hover .digital-story-track{animation-play-state:paused;}
-@keyframes digital-story-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@media (prefers-reduced-motion: reduce){.digital-story-track{animation:none;}}
