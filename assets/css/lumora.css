@@ -8814,10 +8814,10 @@ figure {
   }
 
   .hero-image_wrap {
-    background-image: url("../img/69f5e19b42acf37c98906a5c_home-hero-mobile-image.webp");
-    background-position: 100% 0;
+    background-image: url("../img/gen_about-hero-image.webp");
+    background-position: 50% 0;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
 
   .home-hero_image.hide-on-mobile {
@@ -9197,3 +9197,10 @@ footer{border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
 .section_service.is-service-showcase .service-item_body .button-container{display:none!important;}
 @media(max-width:991px){.digital-expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:479px){.digital-expertise-grid{grid-template-columns:1fr;}.digital-bio-card{padding:24px;}}
+
+/* Mobile/tablet: the GSAP split-letter hero heading entrance is unreliable on small screens
+   (tweens freeze mid-flight leaving the heading invisible). Render it static there;
+   desktop keeps the animation. !important beats GSAP's inline styles. */
+@media (max-width: 767px){
+  [hero-text-split], [hero-text-split] *{opacity:1!important;transform:none!important;}
+}

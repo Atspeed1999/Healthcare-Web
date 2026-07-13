@@ -1991,5 +1991,15 @@
   document.querySelectorAll('img').forEach(bind);
 })();
 </script>
+<script>
+/* Failsafe: if the hero heading's split-text entrance animation stalls (seen on mobile), snap it fully visible. */
+setTimeout(function(){
+  document.querySelectorAll('[hero-text-split]').forEach(function(el){
+    var targets = [el].concat(Array.prototype.slice.call(el.querySelectorAll('*')));
+    if (window.gsap) window.gsap.killTweensOf(targets);
+    targets.forEach(function(t){ t.style.opacity='1'; t.style.transform='none'; });
+  });
+}, 2500);
+</script>
 </body>
 </html>
