@@ -1408,7 +1408,7 @@
                 }
                 function sharedFooter() {
                     document.querySelectorAll('.navbar_button .button_primary, .section_cta .button_primary, .footer_info .button_primary').forEach(function (link) {
-                        link.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+                        link.href = 'contact.html';
                     });
                     document.querySelectorAll('.navbar_button .button_text, .section_cta .button_text, .footer_info .button_text').forEach(function (node) {
                         node.textContent = 'Contact Us';
@@ -1421,8 +1421,8 @@
                         text(email, 'div', 'info@digitalhealthassurance.co.uk');
                     }
                     text(footer, '.footer-info_para', 'Your trusted partner, providing you with the solutions you need, so you can concentrate on what you are good at.');
-                    footer.querySelectorAll('.footer_bottom .text-color-dark').forEach(function (node) {
-                        node.textContent = '© 2026 The Digital Health Assurance Company';
+                    footer.querySelectorAll('.footer_bottom .text-color-dark').forEach(function (node, i) {
+                        node.textContent = i === 0 ? '© 2026 The Digital Health Assurance Company' : '';
                     });
                     var linkedin = footer.querySelector('.footer-menu_link-wrap.is-social .footer-menu_link:nth-child(3)');
                     if (linkedin) linkedin.href = 'https://www.linkedin.com/company/the-digital-health-assurance-company/';
@@ -1434,7 +1434,7 @@
                     text(hero, '.service-hero_para', 'Our team of solution-driven industry experts can work with you to drive business growth whilst ensuring you deliver high quality patient care.');
                     text(hero, '.button_text', 'Contact Us');
                     var heroButton = hero && hero.querySelector('.button_primary');
-                    if (heroButton) heroButton.href = 'mailto:info@digitalhealthassurance.co.uk?subject=Website%20enquiry';
+                    if (heroButton) heroButton.href = 'contact.html';
 
                     var serviceSection = document.querySelector('.section_service.is-service-showcase');
                     if (serviceSection) {
