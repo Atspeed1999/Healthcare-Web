@@ -1675,6 +1675,7 @@
                 function setupServices() {
                     var list = document.querySelector('.section_service .service_list');
                     var trigger = document.querySelector('.section_service .service_sticky-trigger');
+                    var mobileTrigger = document.querySelector('.section_service .scroll-mobile_trigger');
                     var scrollList = document.querySelector('.section_service .scroll_list');
                     var scrollTrack = document.querySelector('.section_service .scroll_track');
                     if (!list || !trigger || !scrollList || !scrollTrack || list.dataset.servicesReady) return;
@@ -1706,15 +1707,15 @@
                     });
 
                     function updateScroll() {
-                        if (window.innerWidth < 992) {
-                            scrollList.style.removeProperty('transform');
-                            scrollTrack.style.removeProperty('transform');
-                            return;
-                        }
-                        var range = trigger.offsetHeight - window.innerHeight;
-                        var progress = range > 0 ? Math.min(Math.max((window.scrollY - (trigger.getBoundingClientRect().top + window.scrollY)) / range, 0), 1) : 0;
+                        // Desktop pins the whole camera; mobile has its own shorter pin (scroll-mobile_trigger).
+                        var driver = (window.innerWidth < 992 && mobileTrigger) ? mobileTrigger : trigger;
+                        var range = driver.offsetHeight - window.innerHeight;
+                        var driverTop = driver.getBoundingClientRect().top + window.scrollY;
+                        var progress = range > 0 ? Math.min(Math.max((window.scrollY - driverTop) / range, 0), 1) : 0;
                         var gap = parseFloat(window.getComputedStyle(list).columnGap) || 0;
-                        var travel = (cards[0].offsetWidth + gap) * (services.length - 1);
+                        // Translate so the last card's right edge lands flush with the viewport, not off-screen.
+                        var wrap = scrollTrack.parentElement;
+                        var travel = Math.max(scrollList.scrollWidth - (wrap ? wrap.clientWidth : window.innerWidth), 0);
                         scrollTrack.style.setProperty('transform', 'translate3d(0, 0, 0)', 'important');
                         scrollList.style.setProperty('transform', 'translate3d(' + (-travel * progress) + 'px, 0, 0)', 'important');
                     }
@@ -2001,6 +2002,21 @@ setTimeout(function(){
     targets.forEach(function(t){ t.style.opacity='1'; t.style.transform='none'; });
   });
 }, 2500);
+/* Failsafe: if the mobile service-showcase pin's entrance fade stalls, reveal it once in view. */
+(function(){
+  var cam = document.querySelector('.section_service .scroll-mobile_camera');
+  if (!cam || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      setTimeout(function(){
+        if (parseFloat(getComputedStyle(cam).opacity) < 1){ cam.style.opacity='1'; cam.style.transform='none'; }
+      }, 600);
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -20% 0px' });
+  io.observe(cam);
+})();
 </script>
 </body>
 </html>
