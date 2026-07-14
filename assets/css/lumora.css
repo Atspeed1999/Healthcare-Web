@@ -9205,24 +9205,16 @@ footer{border-top:3px solid var(--primitive-color--primary-500,#6c4bb6);}
   [hero-text-split], [hero-text-split] *{opacity:1!important;transform:none!important;}
 }
 
-/* Mobile/tablet service showcase: drive the same scroll-scrub effect as desktop, but
-   through the template's own mobile pin (.scroll-mobile_trigger / .scroll-mobile_camera)
-   instead of the tall outer camera pin. Collapse the outer pin so only ONE element pins,
-   and clip the translated row so it never spills into horizontal page scroll. */
+/* Mobile/tablet service showcase: the scroll-scrub horizontal effect is desktop-only
+   (updateScroll bails <992px), which left the cards unreachable in a clipped row and
+   a 400vh empty pin region. Release the pin and make the row natively swipeable. */
 @media (max-width: 991px){
   .section_service .service_sticky-trigger{height:auto;}
-  .section_service .service_sticky-camera{position:static;top:auto;}
-  .section_service .scroll-mobile_trigger{height:360vh;padding-bottom:0;}
-  .section_service .scroll-mobile_camera{position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;justify-content:center;}
-  .section_service .service_wrap{overflow:hidden;width:100%;}
-  .section_service .scroll_list{margin-right:0;will-change:transform;}
-  .section_service .service_item-wrap{width:86cqw;}
-  .section_service .service_item{height:auto;min-height:0;aspect-ratio:auto;padding:18px;}
-  .section_service .service_content{grid-row-gap:12px;}
-  .section_service .service-item_info{grid-row-gap:8px;}
-  .section_service .service-item_image{height:min(180px, 22vh);}
-  .section_service .service-item_info p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.45;}
-  .section_service .service-item_info-title{font-size:22px;}
+  .section_service .scroll_track{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  .section_service .scroll_track::-webkit-scrollbar{display:none;}
+  .section_service .scroll_list{margin-right:0;}
+  .section_service .service_list{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:85cqw;}
+  .section_service .service_item-wrap{scroll-snap-align:center;width:auto;}
 }
 
 /* Desktop short viewports: inside the pinned service showcase, header (~360px) + card
