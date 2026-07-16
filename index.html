@@ -14,6 +14,7 @@
         <meta content="summary_large_image" name="twitter:card"/>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <link href="assets/css/lumora.css?v=20260614f" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/custom.css?v=1" rel="stylesheet" type="text/css"/>
         <style>
             
         </style>
@@ -1781,7 +1782,7 @@
                     {
                         name: 'Avihu Tamir',
                         role: 'CEO, Kanabo Group PLC',
-                        quote: '“As a Board Advisor at Kanabo Group plc, Dr.Buckley has demonstrated exceptional expertise and dedication, leveraging her extensive experience as a digital health founder and healthcare professional.\n\nHer patient-focused approach and solid business acumen have enhanced our strategic direction, enabling us to better align our technology platform and specialized treatment offerings with patient needs while ensuring robust business growth.\n\nHer marketing knowledge has helped refine our brand messaging and outreach strategies to be more effective. In governance and regulatory matters, her advice ensures that our operations adhere to the highest standards and comply with the complex regulatory landscape of the digital health industry.\n\nShe has tremendous leadership and team-building talents. She has a natural ability to inspire and motivate teams while fostering a collaborative and innovative work environment.”'
+                        quote: '“As a Board Advisor at Kanabo Group plc, Dr Buckley has demonstrated exceptional expertise and dedication. Her patient-focused approach and business acumen have enhanced our strategic direction, and in governance and regulatory matters her advice ensures we adhere to the highest standards. She has a natural ability to inspire and motivate teams.”'
                     },
                     {
                         name: 'James Chapman',
@@ -1860,24 +1861,35 @@
                         function swapValueImage(idx){ if (valueImg && values[idx] && values[idx].image){ valueImg.src = values[idx].image; valueImg.removeAttribute('srcset'); valueImg.removeAttribute('sizes'); } }
                         var chevronSVG = '<div class="value-chevron" style="margin-left:auto;display:flex;align-items:center;flex:0 0 auto;transition:transform .3s ease;color:currentColor;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
                         var accItems = Array.prototype.slice.call(valueSection.querySelectorAll('.tabs-accordion_item'));
+                        function setOpen(item, open){
+                            var info=item.querySelector('.tabs-accordion_info');
+                            var ch=item.querySelector('.value-chevron');
+                            if(info){ info.style.overflow='hidden'; info.style.transition='max-height .35s ease'; info.style.maxHeight = open ? (info.scrollHeight+'px') : '0px'; }
+                            if(ch) ch.style.transform = open ? 'rotate(180deg)' : '';
+                            item.classList.toggle('dha-open', open);
+                        }
                         accItems.forEach(function (item, index) {
                             if (!values[index]) return;
                             setText(item, '.tabs-accordion_header-title', values[index].title);
                             setText(item, '.tabs-accordion_info-inner p', values[index].copy);
                             var header = item.querySelector('.tabs-accordion_header');
+                            var info = item.querySelector('.tabs-accordion_info');
+                            if(info){ info.style.height='auto'; info.style.overflow='hidden'; info.style.maxHeight='0px'; }
                             if (header){
                                 header.style.display='flex'; header.style.alignItems='center'; header.style.cursor='pointer';
                                 if (!header.querySelector('.value-chevron')) header.insertAdjacentHTML('beforeend', chevronSVG);
-                                header.addEventListener('click', function(){
-                                    swapValueImage(index);
-                                    accItems.forEach(function(it){ var c=it.querySelector('.value-chevron'); if(c) c.style.transform=''; });
-                                    var ch=header.querySelector('.value-chevron'); if(ch) ch.style.transform='rotate(180deg)';
-                                });
+                                // capture-phase handler blocks Webflow's one-at-a-time tab switching so each tab toggles independently
+                                header.addEventListener('click', function(e){
+                                    e.stopImmediatePropagation(); e.preventDefault();
+                                    var open = !item.classList.contains('dha-open');
+                                    setOpen(item, open);
+                                    if(open) swapValueImage(index);
+                                }, true);
                             }
                         });
+                        // open the first by default; the rest start closed and toggle independently
+                        if(accItems[0]) setOpen(accItems[0], true);
                         swapValueImage(0);
-                        var firstChevron = valueSection.querySelector('.tabs-accordion_item .value-chevron');
-                        if (firstChevron) firstChevron.style.transform='rotate(180deg)';
                         if (!valueSection.querySelector('.value-contact-cta')){
                             var ctaHost = valueSection.querySelector('.tabs-accordion') || valueSection.querySelector('.home-value_content') || valueSection.querySelector('.container');
                             if (ctaHost){

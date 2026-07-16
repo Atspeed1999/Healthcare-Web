@@ -1,0 +1,44 @@
+/* ===== DHA custom overrides (loaded after lumora.css) ===== */
+
+/* Logo slightly smaller so it doesn't look forced into the header */
+.logo_image{ height: 38px !important; }
+
+/* Burger icon -> X when the mobile menu is open */
+.navbar-toggler_bar_top,
+.navbar-toggler_bar-middle,
+.navbar_toggler-bar-bottom{ transition: transform .25s ease, opacity .2s ease; }
+.w-nav-button.w--open .navbar-toggler_bar_top{ transform: translateY(7px) rotate(45deg); }
+.w-nav-button.w--open .navbar-toggler_bar-middle{ opacity: 0; }
+.w-nav-button.w--open .navbar_toggler-bar-bottom{ transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav menu (Webflow opens below 991px): centre the page links for one-hand reach */
+@media screen and (max-width: 991px){
+  .navbar_menu.w-nav-menu{ text-align: center; }
+  .navbar_menu .navbar_link{ justify-content: center !important; text-align: center; width: 100%; }
+  .navbar_menu .navbar_link > div{ width: 100%; text-align: center; }
+}
+
+/* Hide the story slider arrows on mobile (swipe instead) */
+@media screen and (max-width: 767px){
+  .section_story .story-slider_arrow-wrap{ display: none !important; }
+}
+
+/* Dark overlay over the homepage team background so the light description reads */
+.section_team.is-home{ position: relative; }
+.section_team.is-home::before{
+  content: ""; position: absolute; inset: 0;
+  background: rgba(18, 11, 3, .62); z-index: 0; pointer-events: none;
+}
+.section_team.is-home .section-padding,
+.section_team.is-home .container{ position: relative; z-index: 1; }
+
+/* Testimonials ("Voices of Trust"): show nav arrows (bottom corners, clear of the quote), trim padding + height */
+.testimonial-slider_arrow{
+  display: flex !important; top: auto !important; bottom: 4px !important;
+  height: 46px !important; align-items: flex-end; z-index: 5;
+}
+.testimonial-slider_card{ padding: 26px 26px !important; }
+@media screen and (max-width: 767px){
+  .testimonial-slider_card{ padding: 22px 18px 30px !important; }
+  .testimonial-slider_quotes{ font-size: 15px !important; line-height: 1.5 !important; }
+}
