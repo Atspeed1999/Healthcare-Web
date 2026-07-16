@@ -18,11 +18,6 @@
   .navbar_menu .navbar_link > div{ width: 100%; text-align: center; }
 }
 
-/* Why We're Different: let each tab's content expand independently.
-   Webflow's tabs widget sets inline height:0 on non-current items; height:auto !important
-   defeats that so the JS max-height toggle actually reveals the copy. */
-.section_value .tabs-accordion_info{ height: auto !important; overflow: hidden; }
-
 /* Hide the story slider arrows on mobile (swipe instead) */
 @media screen and (max-width: 767px){
   .section_story .story-slider_arrow-wrap{ display: none !important; }
@@ -37,10 +32,11 @@
 .section_team.is-home .section-padding,
 .section_team.is-home .container{ position: relative; z-index: 1; }
 
-/* Testimonials ("Voices of Trust"): show nav arrows (bottom corners, clear of the quote), trim padding + height */
+/* Testimonials ("Voices of Trust"): centre the navigation controls vertically in the card. */
 .testimonial-slider_arrow{
-  display: flex !important; top: auto !important; bottom: 4px !important;
-  height: 46px !important; align-items: flex-end; z-index: 5;
+  display: flex !important; top: 50% !important; bottom: auto !important;
+  transform: translateY(-50%); align-items: center !important; justify-content: center !important;
+  z-index: 5;
 }
 .testimonial-slider_card{ padding: 26px 26px !important; }
 @media screen and (max-width: 767px){
