@@ -1864,7 +1864,13 @@
                         function setOpen(item, open){
                             var info=item.querySelector('.tabs-accordion_info');
                             var ch=item.querySelector('.value-chevron');
-                            if(info){ info.style.overflow='hidden'; info.style.transition='max-height .35s ease'; info.style.maxHeight = open ? (info.scrollHeight+'px') : '0px'; }
+                            if(info){
+                                info.style.setProperty('height','auto','important'); // defeat Webflow's inline height:0
+                                info.style.overflow='hidden';
+                                info.style.transition='max-height .35s ease';
+                                var h = info.scrollHeight;
+                                info.style.maxHeight = open ? ((h>10?h:600)+'px') : '0px';
+                            }
                             if(ch) ch.style.transform = open ? 'rotate(180deg)' : '';
                             item.classList.toggle('dha-open', open);
                         }

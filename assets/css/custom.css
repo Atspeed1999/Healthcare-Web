@@ -18,6 +18,11 @@
   .navbar_menu .navbar_link > div{ width: 100%; text-align: center; }
 }
 
+/* Why We're Different: let each tab's content expand independently.
+   Webflow's tabs widget sets inline height:0 on non-current items; height:auto !important
+   defeats that so the JS max-height toggle actually reveals the copy. */
+.section_value .tabs-accordion_info{ height: auto !important; overflow: hidden; }
+
 /* Hide the story slider arrows on mobile (swipe instead) */
 @media screen and (max-width: 767px){
   .section_story .story-slider_arrow-wrap{ display: none !important; }
